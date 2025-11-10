@@ -1,9 +1,10 @@
 from bullet import Bullet
+from settings import Settings
 import pygame
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from alien_invasion import AlienInvasion
+    from Lab12_corta1 import AlienInvasion
 class Arsenal:
     def __init__(self, game: 'AlienInvasion'):
         self.game = game
@@ -16,7 +17,7 @@ class Arsenal:
 
     def _remove_bullets_offscreen(self):
         for bullet in self.arsenal.copy():
-            if bullet.rect.bottom <= 0:
+            if bullet.rect.right >= self.settings.screen_w + 80:
                 self.arsenal.remove(bullet)
     def draw(self):
         for bullet in self.arsenal:
